@@ -18,7 +18,7 @@ fi
 mkdir output_trk
 mv *.trk output_trk
 
-if [ ! $step_size -eq "null" ]; then
+if [ ! $step_size = "null" ]; then
 	echo "Resampling segentation..."
 	mkdir output_trk_res
 	singularity exec -e docker://brainlife/dipy:0.14 python ./resampling_segmentation.py -trk_dir output_trk -t1 $t1 -step_size $step_size -out_dir output_trk_res
