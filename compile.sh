@@ -4,7 +4,7 @@
 
 [ $PBS_O_WORKDIR ] && cd $PBS_O_WORKDIR
 
-module load matlab/2017a
+module load matlab/2018a
 
 cat > build.m <<END
 addpath(genpath('/N/u/brlife/git/vistasoft'));
