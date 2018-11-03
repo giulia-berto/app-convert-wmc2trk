@@ -53,7 +53,7 @@ def save_tract(tract, t1_filename, out_filename):
 if __name__ == '__main__':
 
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-dir_trk', nargs='?', const=1, default='',
+	parser.add_argument('-trk_dir', nargs='?', const=1, default='',
 	                    help='Directory of the trk files')   
 	parser.add_argument('-t1', nargs='?', const=1, default='',
 	                    help='T1 filename')  
@@ -63,11 +63,11 @@ if __name__ == '__main__':
 	                    help='The output directory')                                           
 	args = parser.parse_args()
 
-	tracts = os.listdir(args.dir_trk)
+	tracts = os.listdir(args.trk_dir)
 	step_size = np.asarray(args.step_size, dtype='float64')
 
 	for i in range(len(tracts)):
-		tract = '%s/%s' %(args.dir_trk, tracts[i])
+		tract = '%s/%s' %(args.trk_dir, tracts[i])
 		tract = nib.streamlines.load(tract).streamlines
 		tract_res = resample_tract(tract, step_size)
 		out_filename = '%s/%s' %(args.out_dir, tracts[i])
