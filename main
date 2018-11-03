@@ -23,11 +23,12 @@ if [ ! $step_size = "null" ]; then
 	mkdir output_trk_res
 	singularity exec -e docker://brainlife/dipy:0.14 python ./resampling_segmentation.py -trk_dir output_trk -t1 $t1 -step_size $step_size -out_dir output_trk_res
 
-if [ -z "$(ls -A -- "output_trk_res")" ]; then 
-    echo "Resampling failed."
-    exit 1
-else 
-    echo "Resampling done."   
+    if [ -z "$(ls -A -- "output_trk_res")" ]; then 
+    	echo "Resampling failed."
+    	exit 1
+    else 
+    	echo "Resampling done."   
+    fi
 fi
 
 echo "Complete"
