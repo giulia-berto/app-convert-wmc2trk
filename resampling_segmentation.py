@@ -71,6 +71,6 @@ if __name__ == '__main__':
 		tract = nib.streamlines.load(tract).streamlines
 		tract_res = resample_tract(tract, step_size)
 		out_filename = '%s/%s' %(args.out_dir, tracts[i])
-		save_tract(tract_res, t1, out_filename)
+		save_tract(tract_res, args.t1, out_filename)
 
 	sys.exit()
