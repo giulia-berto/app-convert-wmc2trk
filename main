@@ -5,8 +5,6 @@
 segmentation=`jq -r '.segmentation' config.json`
 t1=`jq -r '.t1' config.json`
 step_size=`jq -r '.step_size' config.json`
-subjID=`jq -r '._inputs[0].meta.subject' config.json`
-run=`jq -r '.run' config.json`
 
 echo "Convert WMC to trk."
 singularity exec docker://brainlife/mcr:neurodebian1604-r2017a bash -c "./compiled/afqConverter"
@@ -18,7 +16,7 @@ if [ ! $ret -eq 0 ]; then
 fi
 
 mkdir output
-for filename in *.trk; do mv $filename output/sub-${subjID}_var-${run}_$filename; done;
+mv *.trk output
 
 if [ ! $step_size = "null" ]; then
 	echo "Resampling segentation..."
