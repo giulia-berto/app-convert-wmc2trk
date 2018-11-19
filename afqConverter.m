@@ -14,7 +14,7 @@ load(fullfile(config.segmentation));
 
 for tract=1:length(fg_classified)
     tract_name=strrep(fg_classified(tract).name,' ','_');
-    write_fg_to_trk_shift(fg_classified(tract),ref_src,sprintf('%s_tract.trk',tract_name));
+    write_fg_to_trk_shift(fg_classified(tract),ref_src,sprintf('%s.trk',tract_name));
 end 
 
 exit;
